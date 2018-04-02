@@ -21,8 +21,24 @@ help:
 
 .PHONY: install
 install:
-	docker-compose run fpm composer install
+	@docker-compose run fpm composer install
 
 .PHONY: update
 update:
-	docker-compose run fpm composer update
+	@docker-compose run fpm composer update
+
+.PHONY: enter
+enter:
+	@docker-compose run fpm bash
+
+.PHONY: phpspec-describe
+phpspec-describe:
+	@docker-compose run fpm vendor/bin/phpspec describe ${CLASS}
+
+.PHONY: phpspec-run-test
+phpspec-run-test:
+	@docker-compose run fpm vendor/bin/phpspec run test/Unit/${CLASS} -vvv
+
+.PHONY: phpstan
+phpstan:
+	@docker-compose run fpm vendor/bin/phpstan analyse src/ --level=7
