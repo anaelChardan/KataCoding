@@ -39,6 +39,14 @@ phpspec-describe:
 phpspec-run-test:
 	@docker-compose run fpm vendor/bin/phpspec run test/Unit/${CLASS} -vvv
 
+.PHONY: phpspec-run-test-darts
+phpspec-run-test-darts:
+	@docker-compose run fpm vendor/bin/phpspec run test/Unit/Darts/spec -vvv
+
 .PHONY: phpstan
 phpstan:
 	@docker-compose run fpm vendor/bin/phpstan analyse src/ --level=7
+
+.PHONY: cs
+cs:
+	@docker-compose run fpm vendor/bin/php-cs-fixer fix --config=.php_cs.php

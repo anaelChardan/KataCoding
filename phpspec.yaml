@@ -1,6 +1,13 @@
+extensions:
+    Memio\SpecGen\MemioSpecGenExtension: ~
 suites:
     roman_number:
         namespace: Nanou\Kata\RomanNumber
         psr4_prefix: Nanou\Kata\RomanNumber
         src_path: "%paths.config%/src/RomanNumber"
         spec_path: "%paths.config%/test/Unit/RomanNumber"
+    darts:
+        namespace: Nanou\Kata\Darts
+        psr4_prefix: Nanou\Kata\Darts
+        src_path: "%paths.config%/src/Darts"
+        spec_path: "%paths.config%/test/Unit/Darts"
